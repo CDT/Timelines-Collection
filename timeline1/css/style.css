@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,300italic");
+body {
+  background-color: #E9ECF3;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.row {
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.activities {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px;
+  position: relative;
+}
+
+.timeline {
+  background-color: #A0D468;
+  height: 100%;
+  left: 40px;
+  position: absolute;
+  top: -130px;
+  width: 2px;
+  z-index: 0;
+}
+@media (min-width: 768px) {
+  .timeline {
+    left: 50%;
+  }
+}
+
+.activity {
+  display: flex;
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .activity {
+    width: 50%;
+  }
+}
+.activity.event {
+  flex-direction: column;
+  margin-bottom: 0;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .activity.event .activity-type {
+    align-self: center;
+    margin: 0;
+    background-color: rgba(160, 212, 104, 0.2);
+  }
+}
+.activity.event .activity-body {
+  margin-top: 16px;
+}
+@media (min-width: 768px) {
+  .activity.event .activity-body {
+    text-align: center;
+  }
+}
+.activity.event .activity-meta {
+  margin-bottom: 0;
+  padding: 16px;
+}
+.activity.event .activity-meta::before {
+  border-right-color: transparent;
+  border-bottom-color: rgba(160, 212, 104, 0.2);
+  left: 4px;
+  top: -16px;
+}
+@media (min-width: 768px) {
+  .activity.event .activity-meta::before {
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+  }
+}
+@media (min-width: 768px) {
+  .activity.trail {
+    align-self: flex-end;
+    text-align: right;
+  }
+  .activity.trail .activity-type {
+    margin-left: -24px;
+    margin-right: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .activity.journal {
+    align-self: flex-start;
+  }
+  .activity.journal .activity-type {
+    margin-left: 16px;
+    margin-right: -24px;
+    order: 1;
+  }
+  .activity.journal .activity-meta::before {
+    border-left-color: rgba(160, 212, 104, 0.2);
+    border-right-color: transparent;
+    left: auto;
+    right: -16px;
+  }
+}
+.activity.journal .activity-content {
+  background-color: rgba(238, 238, 238, 0.5);
+  border-radius: 3px;
+  color: #333333;
+  font-weight: 400;
+  padding: 16px;
+}
+.activity-type {
+  align-self: flex-start;
+  background-color: #fff;
+  border: 2px solid #A0D468;
+  border-radius: 100%;
+  display: flex;
+  margin-right: 16px;
+  padding: 16px;
+  z-index: 1;
+}
+.activity-type .fa {
+  color: #8bb55e;
+}
+.activity-body {
+  flex: 1;
+  flex-direction: column;
+}
+.activity-meta {
+  background-color: rgba(160, 212, 104, 0.2);
+  border-radius: 3px;
+  color: #8bb55e;
+  font-size: 90%;
+  font-weight: 600;
+  margin-bottom: 4px;
+  padding: 8px 16px;
+  position: relative;
+}
+.activity-meta::before {
+  content: '';
+  border: 8px solid transparent;
+  border-right-color: rgba(160, 212, 104, 0.2);
+  border-radius: 3px;
+  position: absolute;
+  top: 4px;
+  left: -16px;
+}
+.activity-meta-date {
+  display: inline-block;
+  margin-left: 4px;
+}
+.activity .changeset {
+  background-color: rgba(238, 238, 238, 0.5);
+  border-radius: 3px;
+  font-weight: 400;
+  margin-bottom: 2px;
+  padding: 8px;
+  text-align: left;
+}
+.activity .changeset-attribute {
+  color: #333333;
+  display: inline-block;
+  font-weight: 600;
+  margin-right: 8px;
+  min-width: 120px;
+}
+.activity .changeset .fa {
+  align-self: center;
+  color: #333333;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.activity .changeset-value-old {
+  color: #999999;
+  text-decoration: line-through;
+}
+.activity .changeset-value-new {
+  color: #A0D468;
+}
+
+.activity-form-input {
+  display: none;
+}
+.activity-form-input-custom {
+  background-color: #fff;
+  border-bottom: 2px solid #A0D468;
+  max-height: 240px;
+  min-height: 48px;
+  overflow: auto;
+  padding: 16px;
+  padding-right: 96px;
+  position: relative;
+  word-break: break-word;
+  z-index: 1;
+}
+.activity-form-input-custom::before {
+  content: "Create a new journal entry..";
+  color: #999;
+  position: absolute;
+  top: 16px;
+}
+.activity-form-input-custom:focus {
+  outline: none;
+}
+.activity-form-input-custom:focus::before {
+  content: "";
+}
+.activity-form-action {
+  float: right;
+  margin-right: 16px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+}

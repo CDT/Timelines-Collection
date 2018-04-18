@@ -1,0 +1,309 @@
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,300italic");
+
+$green:       #A0D468;
+$lightgreen:  #D5E1A3;
+$darkgreen:   #8CC152;
+$blue:        #42A2DC;
+$lightblue:   #4FC1E9;
+$darkblue:    #10689A;
+$red:         #DA564A;
+$lightred:    #ED5565;
+$darkred:     #DA4453;
+$yellow:      #FFCE54;
+$darkyellow:  #FCBB42;
+$orange:      #FC6E51;
+$darkorange:  #E9573F;
+$purple:      #AC92EC;
+$darkpurple:  #967ADC;
+$white:       #FFFFFF;
+$gray:        #F0F0F0;
+$lightgray:   #EEEEEE;
+$newgray:     #E9ECF3;
+$darkgray:    #999999;
+$newdarkgray: #697882;
+$black:       #333333;
+
+  $primary-color:      $blue;
+  $success-color:      $green;
+  $danger-color:       $red;
+  $warning-color:      $orange;
+  $info-color:         $newdarkgray;
+  $notification-color: $lightblue;
+  $default-color:      $newgray;
+  $dark-color:         $black;
+
+  $border-radius--size: 3px;
+  
+  $grid-spacing: 16px;
+  $grid-spacing--half: $grid-spacing / 2;
+
+body {
+  background-color: $default-color;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.row {
+  background-color: #fff;
+  border-radius: $border-radius--size;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+$activity-class: '.activity';
+
+$timeline-color--main: $green;
+$timeline-color--header: rgba($timeline-color--main, .2);
+$timeline-color--body: rgba($lightgray, .5);
+$timeline-color--border: $timeline-color--main;
+
+$timeline-color--text-default: $black;
+$timeline-color--text-header: desaturate($darkgreen, 10%);
+$timeline-color--text-body: $black;
+$timeline-color--text-old: $darkgray;
+$timeline-color--text-new: $green;
+
+$timeline-text--weight-default: 600;
+$timeline-text--weight-header: 600;
+$timeline-text--weight-body: 400;
+
+$timeline-border--size: 2px;
+
+.activities {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: $grid-spacing;
+  position: relative;
+}
+
+.timeline {
+  background-color: $timeline-color--border;
+  height: 100%;
+  left: $grid-spacing * 2.5;
+  position: absolute;
+  top: -( $grid-spacing * 8 + 2px );
+  width: $timeline-border--size;
+  z-index: 0;
+
+  @media(min-width: 768px) {
+    left: 50%;
+  }
+}
+
+#{$activity-class} {
+  display: flex;
+  margin-bottom: $grid-spacing;
+
+  @media(min-width: 768px) {
+    width: 50%;
+  }
+
+  &.event {
+    flex-direction: column;
+    margin-bottom: 0;
+    width: 100%;
+
+    @media(min-width: 768px) {
+
+      #{$activity-class}-type {
+        align-self: center;
+        margin: 0;
+        background-color: $timeline-color--header;
+      }
+    }
+
+    #{$activity-class}-body {
+      margin-top: $grid-spacing;
+
+      @media(min-width: 768px) {
+        text-align: center;
+      }
+    }
+
+    #{$activity-class}-meta {
+      margin-bottom: 0;
+      padding: $grid-spacing;
+
+      &::before {
+        border-right-color: transparent;
+        border-bottom-color: $timeline-color--header;
+        left: $grid-spacing--half / 2;
+        top: -( $grid-spacing );
+
+        @media(min-width: 768px) {
+          left: 50%;
+          transform: translate(-50%, 0);
+        }
+      }
+    }
+  }
+
+  @media(min-width: 768px) {
+
+    &.trail {
+      align-self: flex-end;
+      text-align: right;
+
+      #{$activity-class}-type {
+        margin-left: -( $grid-spacing * 1.5 );
+        margin-right: $grid-spacing;
+      }
+    }
+  }
+
+  &.journal {
+
+    @media(min-width: 768px) {
+      align-self: flex-start;
+
+      #{$activity-class}-type {
+        margin-left: $grid-spacing;
+        margin-right: -( $grid-spacing * 1.5 );
+        order: 1;
+      }
+
+      #{$activity-class}-meta {
+
+        &::before {
+          border-left-color: $timeline-color--header;
+          border-right-color: transparent;
+          left: auto;
+          right: -( $grid-spacing );
+        }
+      }
+    }
+
+    #{$activity-class}-content {
+      background-color: $timeline-color--body;
+      border-radius: $border-radius--size;
+      color: $timeline-color--text-body;
+      font-weight: $timeline-text--weight-body;
+      padding: $grid-spacing;
+    }
+  }
+
+  &-type {
+    align-self: flex-start;
+    background-color: #fff;
+    border: $timeline-border--size solid $timeline-color--border;
+    border-radius: 100%;
+    display: flex;
+    margin-right: $grid-spacing;
+    padding: $grid-spacing;
+    z-index: 1;
+
+    .fa { color: $timeline-color--text-header; }
+  }
+
+  &-body {
+    flex: 1;
+    flex-direction: column;
+  }
+
+  &-meta {
+    background-color: $timeline-color--header;
+    border-radius: $border-radius--size;
+    color: $timeline-color--text-header;
+    font-size: 90%;
+    font-weight: $timeline-text--weight-header;
+    margin-bottom: $grid-spacing--half / 2;
+    padding: $grid-spacing--half $grid-spacing;
+    position: relative;
+
+    &::before {
+      content: '';
+      border: $grid-spacing--half solid transparent;
+      border-right-color: $timeline-color--header;
+      border-radius: $border-radius--size;
+      position: absolute;
+      top: $grid-spacing--half / 2;
+      left: -( $grid-spacing );
+    }
+
+    &-date {
+      display: inline-block;
+      margin-left: $grid-spacing--half / 2;
+    }
+  }
+
+  .changeset {
+    background-color: $timeline-color--body;
+    border-radius: $border-radius--size;
+    font-weight: $timeline-text--weight-body;
+    margin-bottom: 2px;
+    padding: $grid-spacing--half;
+    text-align: left;
+
+    &-attribute {
+      color: $timeline-color--text-default;
+      display: inline-block;
+      font-weight: $timeline-text--weight-default;
+      margin-right: $grid-spacing--half;
+      min-width: 120px;
+    }
+
+    .fa {
+      align-self: center;
+      color: $timeline-color--text-default;
+      margin-left: $grid-spacing--half / 2;
+      margin-right: $grid-spacing--half / 2;
+    }
+
+    &-value {
+      &-old {
+        color: $timeline-color--text-old;
+        text-decoration: line-through;
+      }
+
+      &-new { color: $timeline-color--text-new; }
+    }
+  }
+}
+
+.activity {
+  &-form {
+    
+    &-input {
+      display: none;
+
+      &-custom {
+        background-color: #fff;
+        border-bottom: $timeline-border--size solid $timeline-color--border;
+        max-height: $grid-spacing * 15;
+        min-height: $grid-spacing * 3;
+        overflow: auto;
+        padding: $grid-spacing;
+        padding-right: $grid-spacing * 6;
+        position: relative;
+        word-break: break-word;
+        z-index: 1;
+
+        &::before {
+          content: "Create a new journal entry..";
+          color: #999;
+          position: absolute;
+          top: $grid-spacing;
+        }
+
+        &:focus {
+          outline: none;
+
+          &::before { content: ""; }
+        }
+      }
+    }
+    
+    &-action {
+      float: right;
+      margin-right: $grid-spacing;
+      margin-top: -( $grid-spacing * 2.5 );
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
